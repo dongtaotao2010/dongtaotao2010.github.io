@@ -101,6 +101,18 @@ h2::after{content:"";flex:1;height:1px;background:var(--border)}
   background:var(--accent);opacity:.7;
 }
 
+/* ===== Project Card (cpu_temp) ===== */
+.project-card{background:var(--card);border-radius:12px;padding:1.5rem;border:1px solid var(--border);transition:background .3s,border .3s}
+.project-desc{font-size:.95rem;color:var(--text-secondary);margin-bottom:.8rem;line-height:1.7}
+.project-code{
+  background:#1e293b;border-radius:8px;padding:1rem;overflow-x:auto;
+  font-family:'SFMono-Regular','Menlo','Monaco','Cascadia Code','JetBrains Mono','Noto Sans Mono','Consolas',monospace;
+  font-size:.8rem;line-height:1.6;position:relative;
+}
+.project-code code{color:#e2e8f0;white-space:pre}
+/* syntax highlight */
+.c-kw{color:#c084fc}.c-fn{color:#67e8f9}.c-str{color:#86efac}.c-cm{color:#64748b}.c-num{color:#fde68a}.c-op{color:#fca5a5}
+
 /* ===== Timeline (暑期营) ===== */
 .timeline{position:relative;padding-left:2rem}
 .timeline::before{
@@ -208,6 +220,35 @@ footer p{color:var(--text-secondary);font-size:.82rem}
         <li>参加交大学森暑期营，用 SSH 连上一块 8 核 RISC-V 板子</li>
         <li>让 AI 智能体在上面写了个 AI 微短剧生成系统</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- 项目卡片 -->
+  <section>
+    <h2>🔧 一个小作品</h2>
+    <div class="project-card">
+      <p class="project-desc">
+        写了个 <strong>cpu_temp.py</strong>，跑在 RISC-V 板子上实时监视 CPU 温度。
+        每隔一秒读一次 <code>/sys/class/thermal/thermal_zone0/temp</code>，
+        超过 75°C 就用红字警告，正常显示绿色。
+        在 SSH 终端里跑起来像个小仪表盘，直观又省资源。
+      </p>
+      <div class="project-code"><code><span class="c-cm">#!/usr/bin/env python3</span>
+<span class="c-kw">import</span> time, os
+
+<span class="c-fn">TEMP_PATH</span> = <span class="c-str">"/sys/class/thermal/thermal_zone0/temp"</span>
+
+<span class="c-kw">def</span> <span class="c-fn">read_temp</span>():<span class="c-kw">
+    </span><span class="c-kw">with</span> open(TEMP_PATH) <span class="c-kw">as</span> f:
+        <span class="c-kw">return</span> <span class="c-fn">round</span>(<span class="c-fn">int</span>(f.read()) / <span class="c-num">1000</span>, <span class="c-num">1</span>)
+
+<span class="c-kw">while</span> <span class="c-op">True</span>:
+    temp = <span class="c-fn">read_temp</span>()
+    flag = <span class="c-str">"🐱"</span> <span class="c-kw">if</span> temp &lt; <span class="c-num">75</span> <span class="c-kw">else</span> <span class="c-str">"🔥"</span>
+    color = <span class="c-str">"\033[92m"</span> <span class="c-kw">if</span> temp &lt; <span class="c-num">75</span> <span class="c-kw">else</span> <span class="c-str">"\033[91m"</span>
+    <span class="c-fn">print</span>(<span class="c-str">f"{color}{flag} CPU: {temp}°C\033[0m"</span>)
+    time.<span class="c-fn">sleep</span>(<span class="c-num">1</span>)
+</code></div>
     </div>
   </section>
 
