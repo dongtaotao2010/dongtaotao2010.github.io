@@ -67,6 +67,8 @@ section{margin-bottom:2.8rem;animation:fadeUp .6s ease both}
 section:nth-child(2){animation-delay:.1s}
 section:nth-child(3){animation-delay:.2s}
 section:nth-child(4){animation-delay:.3s}
+section:nth-child(5){animation-delay:.4s}
+section:nth-child(6){animation-delay:.5s}
 
 h2{
   font-size:1.3rem;font-weight:600;margin-bottom:1rem;
@@ -101,6 +103,30 @@ h2::after{content:"";flex:1;height:1px;background:var(--border)}
   content:"";position:absolute;left:0;top:.55rem;
   width:8px;height:8px;border-radius:50%;
   background:var(--accent);opacity:.7;
+}
+
+/* ===== Timeline (暑期营) ===== */
+.timeline{position:relative;padding-left:2rem}
+.timeline::before{
+  content:"";position:absolute;left:12px;top:6px;bottom:6px;
+  width:2px;background:var(--border);border-radius:1px;
+}
+.tl-item{position:relative;padding:0 0 1.5rem 1rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-icon{
+  position:absolute;left:-1.85rem;top:0;
+  width:26px;height:26px;border-radius:50%;
+  background:var(--accent);color:#fff;
+  font-size:.8rem;display:flex;align-items:center;justify-content:center;
+  z-index:1;box-shadow:0 2px 8px rgba(37,99,235,.25);
+  line-height:1;
+}
+.tl-day{
+  font-size:.78rem;font-weight:600;color:var(--accent);
+  text-transform:uppercase;letter-spacing:.04em;margin-bottom:.15rem;
+}
+.tl-text{
+  font-size:.92rem;color:var(--text-secondary);line-height:1.6;
 }
 
 /* ===== Quote ===== */
@@ -169,6 +195,35 @@ footer p{color:var(--text-secondary);font-size:.82rem}
         <li>参加交大学森暑期营，用 SSH 连上一块 8 核 RISC-V 板子</li>
         <li>让 AI 智能体在上面写了个 AI 微短剧生成系统</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- 暑期营记录 -->
+  <section>
+    <h2>🏕️ 暑期营记录</h2>
+    <div class="card">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-icon">💻</div>
+          <div class="tl-day">第一天</div>
+          <div class="tl-text">连上 RISC-V 板子学 Linux，第一次在真正的服务器上敲命令</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-icon">🤖</div>
+          <div class="tl-day">第二天</div>
+          <div class="tl-text">给板子装上了 AI 智能体，让它可以帮我干活了</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-icon">🛠️</div>
+          <div class="tl-day">第三天</div>
+          <div class="tl-text">让智能体写程序，搭了个 AI 微短剧生成系统</div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-icon">🌐</div>
+          <div class="tl-day">第四天</div>
+          <div class="tl-text">做了这个网页，发布到 GitHub Pages 上</div>
+        </div>
+      </div>
     </div>
   </section>
 
