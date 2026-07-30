@@ -51,11 +51,9 @@ body{
 
 /* ===== Header ===== */
 header{text-align:center;margin-bottom:3rem}
-.avatar{
+.avatar-img{
   width:96px;height:96px;border-radius:50%;
-  background:var(--accent);
-  color:#fff;font-size:2.4rem;font-weight:700;
-  display:flex;align-items:center;justify-content:center;
+  object-fit:cover;display:block;
   margin:0 auto 1.2rem;
   box-shadow:0 4px 20px rgba(37,99,235,.2);
 }
@@ -151,7 +149,7 @@ footer p{color:var(--text-secondary);font-size:.82rem}
 @media(max-width:480px){
   .container{padding:1.5rem 1rem}
   h1{font-size:1.6rem}
-  .avatar{width:80px;height:80px;font-size:2rem}
+  .avatar-img{width:80px;height:80px}
   .card{padding:1.2rem}
 }
 </style>
@@ -162,7 +160,7 @@ footer p{color:var(--text-secondary);font-size:.82rem}
 
   <!-- Header -->
   <header>
-    <div class="avatar">淘</div>
+    <img src="avatar.jpg" alt="董淘淘" class="avatar-img">
     <h1>董淘淘</h1>
     <p class="tagline">大连某中学高中生，遨游于知识的海洋中</p>
   </header>
