@@ -148,6 +148,10 @@ blockquote{
 /* ===== Footer ===== */
 footer{text-align:center;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border)}
 footer p{color:var(--text-secondary);font-size:.82rem}
+.footer-quote{
+  margin-bottom:.5rem;font-size:.82rem;color:var(--text-secondary);
+  font-style:italic;line-height:1.5;max-width:400px;margin-left:auto;margin-right:auto;
+}
 
 /* ===== Animation ===== */
 @keyframes fadeUp{
@@ -293,6 +297,7 @@ footer p{color:var(--text-secondary);font-size:.82rem}
   </section>
 
   <footer>
+    <p class="footer-quote" id="footerQuote"></p>
     <p>&copy; 2026 董淘淘 · Made with ❤️</p>
   </footer>
 
@@ -321,10 +326,31 @@ footer p{color:var(--text-secondary);font-size:.82rem}
     localStorage.setItem('theme',now?'light':'dark');
   });
 
-  // 当用户未手动选择时，跟随系统变化
   sysDark.addEventListener('change',function(e){
     if(!localStorage.getItem('theme')) apply(e.matches);
   });
+})();
+
+// 随机格言
+(function(){
+  var q=[
+    '"Talk is cheap. Show me the code." — Linus Torvalds',
+    '"Premature optimization is the root of all evil." — Donald Knuth',
+    '"Any fool can write code that a computer can understand. Good programmers write code that humans can understand." — Martin Fowler',
+    '"The best way to predict the future is to invent it." — Alan Kay',
+    '"Simple is better than complex." — The Zen of Python',
+    '"First, solve the problem. Then, write the code." — John Johnson',
+    '"Debugging is twice as hard as writing the code in the first place." — Brian Kernighan',
+    '"如果我看得更远，那是因为我站在巨人的肩膀上。" — 牛顿',
+    '"学而不思则罔，思而不学则殆。" — 孔子',
+    '"千里之行，始于足下。" — 老子',
+    '"种一棵树最好的时间是十年前，其次是现在。"',
+    '"Stay hungry, stay foolish." — Steve Jobs',
+    '"Knowledge is power." — Francis Bacon',
+    '"The only way to do great work is to love what you do." — Steve Jobs',
+    '"不要因为走得太远，忘了我们为什么出发。" — 纪伯伦',
+  ];
+  document.getElementById('footerQuote').textContent = q[Math.floor(Math.random() * q.length)];
 })();
 </script>
 
