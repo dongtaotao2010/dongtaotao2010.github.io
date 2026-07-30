@@ -22,19 +22,17 @@ html{font-size:16px;scroll-behavior:smooth}
   --tag-text:#4338ca;
 }
 
-@media(prefers-color-scheme:dark){
-  :root{
-    --bg:#0f172a;
-    --card:#1e293b;
-    --text:#e2e8f0;
-    --text-secondary:#94a3b8;
-    --accent:#60a5fa;
-    --accent-light:#1e3a5f;
-    --border:#334155;
-    --quote-bg:#1e293b;
-    --tag-bg:#1e1b4b;
-    --tag-text:#a5b4fc;
-  }
+html.dark{
+  --bg:#0f172a;
+  --card:#1e293b;
+  --text:#e2e8f0;
+  --text-secondary:#94a3b8;
+  --accent:#60a5fa;
+  --accent-light:#1e3a5f;
+  --border:#334155;
+  --quote-bg:#1e293b;
+  --tag-bg:#1e1b4b;
+  --tag-text:#a5b4fc;
 }
 
 body{
@@ -152,9 +150,26 @@ footer p{color:var(--text-secondary);font-size:.82rem}
   .avatar-img{width:80px;height:80px}
   .card{padding:1.2rem}
 }
+.theme-btn{
+  position:fixed;top:1rem;right:1rem;z-index:100;
+  width:38px;height:38px;border-radius:50%;border:1px solid var(--border);
+  background:var(--card);color:var(--text-secondary);
+  font-size:1.1rem;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .3s,border .3s,color .3s,transform .2s;
+  box-shadow:0 2px 8px rgba(0,0,0,.06);
+  line-height:1;
+}
+.theme-btn:hover{transform:scale(1.1)}
+
+@media(max-width:480px){
+  .theme-btn{top:.7rem;right:.7rem;width:34px;height:34px;font-size:1rem}
+}
 </style>
 </head>
 <body>
+
+<button class="theme-btn" id="themeBtn" title="切换深色/浅色模式">🌙</button>
 
 <div class="container">
 
@@ -226,6 +241,9 @@ footer p{color:var(--text-secondary);font-size:.82rem}
   </section>
 
   <!-- 喜欢的一句话 -->
+  <!-- noopener safety + external link already safe -->
+
+
   <section>
     <h2>💬 喜欢的一句话</h2>
     <blockquote>
@@ -238,6 +256,36 @@ footer p{color:var(--text-secondary);font-size:.82rem}
   </footer>
 
 </div>
+
+<script>
+(function(){
+  var btn=document.getElementById('themeBtn');
+  var saved=localStorage.getItem('theme');
+  var sysDark=window.matchMedia('(prefers-color-scheme:dark)');
+
+  function apply(dark){
+    document.documentElement.classList.toggle('dark',dark);
+    btn.textContent=dark?'☀️':'🌙';
+  }
+
+  if(saved){
+    apply(saved==='dark');
+  }else{
+    apply(sysDark.matches);
+  }
+
+  btn.addEventListener('click',function(){
+    var now=document.documentElement.classList.contains('dark');
+    apply(!now);
+    localStorage.setItem('theme',now?'light':'dark');
+  });
+
+  // 当用户未手动选择时，跟随系统变化
+  sysDark.addEventListener('change',function(e){
+    if(!localStorage.getItem('theme')) apply(e.matches);
+  });
+})();
+</script>
 
 </body>
 </html>
