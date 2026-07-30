@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>董淘淘 · 个人主页</title>
+<style>
+/* ===== Reset & Base ===== */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+
+:root{
+  --bg:#f8f9fa;
+  --card:#ffffff;
+  --text:#1a1a2e;
+  --text-secondary:#555;
+  --accent:#2563eb;
+  --accent-light:#dbeafe;
+  --border:#e5e7eb;
+  --quote-bg:#f1f5f9;
+  --tag-bg:#eef2ff;
+  --tag-text:#4338ca;
+}
+
+@media(prefers-color-scheme:dark){
+  :root{
+    --bg:#0f172a;
+    --card:#1e293b;
+    --text:#e2e8f0;
+    --text-secondary:#94a3b8;
+    --accent:#60a5fa;
+    --accent-light:#1e3a5f;
+    --border:#334155;
+    --quote-bg:#1e293b;
+    --tag-bg:#1e1b4b;
+    --tag-text:#a5b4fc;
+  }
+}
+
+body{
+  font-family:"PingFang SC","Microsoft YaHei","Hiragino Sans GB","Noto Sans SC",sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.7;
+  min-height:100vh;
+  transition:background .3s,color .3s;
+}
+
+/* ===== Layout ===== */
+.container{max-width:720px;margin:0 auto;padding:2.5rem 1.5rem}
+
+/* ===== Header ===== */
+header{text-align:center;margin-bottom:3rem}
+.avatar{
+  width:96px;height:96px;border-radius:50%;
+  background:var(--accent);
+  color:#fff;font-size:2.4rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1.2rem;
+  box-shadow:0 4px 20px rgba(37,99,235,.2);
+}
+h1{font-size:2rem;font-weight:700;margin-bottom:.4rem}
+.tagline{color:var(--text-secondary);font-size:1.05rem}
+
+/* ===== Sections ===== */
+section{margin-bottom:2.8rem;animation:fadeUp .6s ease both}
+section:nth-child(2){animation-delay:.1s}
+section:nth-child(3){animation-delay:.2s}
+section:nth-child(4){animation-delay:.3s}
+
+h2{
+  font-size:1.3rem;font-weight:600;margin-bottom:1rem;
+  display:flex;align-items:center;gap:.5rem;color:var(--accent);
+}
+h2::after{content:"";flex:1;height:1px;background:var(--border)}
+
+/* ===== Card ===== */
+.card{
+  background:var(--card);border-radius:12px;padding:1.5rem;
+  border:1px solid var(--border);transition:background .3s,border .3s;
+}
+
+/* ===== Tags (hobbies) ===== */
+.tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:.2rem}
+.tag{
+  display:inline-flex;align-items:center;gap:.35rem;
+  background:var(--tag-bg);color:var(--tag-text);
+  padding:.35rem .85rem;border-radius:999px;
+  font-size:.88rem;font-weight:500;
+  transition:transform .2s,box-shadow .2s;
+}
+.tag:hover{transform:translateY(-2px);box-shadow:0 4px 12px rgba(0,0,0,.08)}
+
+/* ===== Recent Activity ===== */
+.activity-list{list-style:none;display:flex;flex-direction:column;gap:.75rem}
+.activity-list li{
+  position:relative;padding-left:1.4rem;
+  color:var(--text-secondary);font-size:.95rem;
+}
+.activity-list li::before{
+  content:"";position:absolute;left:0;top:.55rem;
+  width:8px;height:8px;border-radius:50%;
+  background:var(--accent);opacity:.7;
+}
+
+/* ===== Quote ===== */
+blockquote{
+  background:var(--quote-bg);border-left:3px solid var(--accent);
+  padding:.85rem 1.2rem;border-radius:0 8px 8px 0;
+  font-size:.95rem;font-style:italic;color:var(--text-secondary);
+  transition:background .3s;
+}
+
+/* ===== Footer ===== */
+footer{text-align:center;margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+footer p{color:var(--text-secondary);font-size:.82rem}
+
+/* ===== Animation ===== */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ===== Responsive ===== */
+@media(max-width:480px){
+  .container{padding:1.5rem 1rem}
+  h1{font-size:1.6rem}
+  .avatar{width:80px;height:80px;font-size:2rem}
+  .card{padding:1.2rem}
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <header>
+    <div class="avatar">淘</div>
+    <h1>董淘淘</h1>
+    <p class="tagline">大连某中学高中生，遨游于知识的海洋中</p>
+  </header>
+
+  <!-- 关于我 -->
+  <section>
+    <h2>📖 关于我</h2>
+    <div class="card">
+      <p>一个在大连读书的高中生，喜欢在课堂上听老师讲天南地北，课后自己折腾些有意思的东西。总想着能学更多、见更广，正在努力成为一个有趣又有用的人。</p>
+    </div>
+  </section>
+
+  <!-- 我的爱好 -->
+  <section>
+    <h2>🏸 我的爱好</h2>
+    <div class="card">
+      <div class="tags">
+        <span class="tag">🪶 打羽毛球</span>
+        <span class="tag">⛷️ 滑雪</span>
+        <span class="tag">🐍 写 Python 小脚本</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最近在做什么 -->
+  <section>
+    <h2>🚀 最近在做什么</h2>
+    <div class="card">
+      <ul class="activity-list">
+        <li>参加交大学森暑期营，用 SSH 连上一块 8 核 RISC-V 板子</li>
+        <li>让 AI 智能体在上面写了个 AI 微短剧生成系统</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 喜欢的一句话 -->
+  <section>
+    <h2>💬 喜欢的一句话</h2>
+    <blockquote>
+      种一棵树最好的时间是十年前，其次是现在。
+    </blockquote>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 董淘淘 · Made with ❤️</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
